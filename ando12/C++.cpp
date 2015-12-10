@@ -25,11 +25,7 @@ int main(){
 	sort(xl.begin(),xl.end());
 	sort(yl.begin(),yl.end());
 	int xmin=2147483647,ymin=2147483647;
-	for(int i=0;i<xn;i++){
-		if(xl[i+1]-xl[i]<xmin)xmin=xl[i+1]-xl[i];
-	}
-	for(int i=0;i<yn;i++){
-		if(yl[i+1]-yl[i]<ymin)ymin=yl[i+1]-yl[i];
-	}
+	for(int i=0;i<xn;i++)xmin=min(xmin,xl[i+1]-xl[i]);
+	for(int i=0;i<yn;i++)ymin=min(ymin,yl[i+1]-yl[i]);
 	cout<<xmin*ymin*z;
 }
