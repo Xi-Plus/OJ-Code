@@ -28,5 +28,4 @@ int main(){
 	}else{
 		cout<<"None";
 	}
-	cout<<endl;
 }
