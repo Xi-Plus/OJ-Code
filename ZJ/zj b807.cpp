@@ -83,8 +83,12 @@ int main(){
 	Debug(FILE *ggb;
 	ggb=fopen("zj b807-ggb.txt","w");
 	fprintf(ggb,"var a = ggbApplet; \n");)
+	Debug(int testcount=0;)
 	while(T--){
+		Debug(testcount++;)
+		Debug(cout<<"#"<<testcount<<endl;)
 		cin>>R>>px>>py>>N;
+		Debug(printf("%lf %lf %lf %d \n",R,px,py,N);)
 		Debug(fprintf(ggb,"a.evalCommand('Polygon[(%lf,%lf), (%lf,%lf), (%lf,%lf), (%lf,%lf)]'); \n",px-R,py+R,px-R,py-R,px+R,py-R,px+R,py+R);)
 		vector<PointList>pointlist;
 		pointlist.push_back({-R,+R,0,2});
@@ -100,6 +104,7 @@ int main(){
 		for(int q=0;q<N;q++){
 			double xl,yt,xr,yb;
 			cin>>xl>>yt>>xr>>yb;
+			Debug(printf("%lf %lf %lf %lf \n",xl,yt,xr,yb);)
 			xl-=px;xr-=px;
 			yt-=py;yb-=py;
 			if(xl>xr) swap(xl,xr);
@@ -107,11 +112,16 @@ int main(){
 			Debug(fprintf(ggb,"a.evalCommand('Polygon[(%lf,%lf), (%lf,%lf), (%lf,%lf), (%lf,%lf)]'); \n",xl,yt,xl,yb,xr,yb,xr,yt);)
 			int side=get_side(xl,yt,xr,yb,R);
 			if(side==0)continue;
+			if(xl==xr&&yt==yb)continue;
 			obstacle_ans+=(min(xr,R)-max(xl,-R))*(min(yt,R)-max(yb,-R));
-			if(side%3==1) sidelist.push_back({{xr,yt},{xr,yb}});
-			else if(side%3==0) sidelist.push_back({{xl,yt},{xl,yb}});
-			if(side<=3) sidelist.push_back({{xl,yb},{xr,yb}});
-			else if(side>=7) sidelist.push_back({{xl,yt},{xr,yt}});
+			if(yt!=yb){
+				if(side%3==1) sidelist.push_back({{xr,yt},{xr,yb}});
+				else if(side%3==0) sidelist.push_back({{xl,yt},{xl,yb}});
+			}
+			if(xl!=xr){
+				if(side<=3) sidelist.push_back({{xl,yb},{xr,yb}});
+				else if(side>=7) sidelist.push_back({{xl,yt},{xr,yt}});
+			}
 			Debug(printf("inputside: %lf %lf %lf %lf %d \n",xl,yt,xr,yb,side);)
 			switch(side){
 				case 1:
@@ -119,7 +129,7 @@ int main(){
 					Debug(fprintf(ggb,"a.evalCommand('Ray[(0,0), (%lf,%lf)]'); \n",xr,min(yt,R));)
 					pointlist.push_back({max(xl,-R),yb,0,1});
 					Debug(fprintf(ggb,"a.evalCommand('Ray[(0,0), (%lf,%lf)]'); \n",max(xl,-R),yb);)
-					pointlist.push_back({xr,yb,0,2});
+					if(xl!=xr&&yt!=yb)pointlist.push_back({xr,yb,0,2});
 					break;
 				case 2:
 					pointlist.push_back({xr,yb,0,0});
@@ -132,7 +142,7 @@ int main(){
 					Debug(fprintf(ggb,"a.evalCommand('Ray[(0,0), (%lf,%lf)]'); \n",min(xr,R),yb);)
 					pointlist.push_back({xl,min(yt,R),0,1});
 					Debug(fprintf(ggb,"a.evalCommand('Ray[(0,0), (%lf,%lf)]'); \n",xl,min(yt,R));)
-					pointlist.push_back({xl,yb,0,2});
+					if(xl!=xr&&yt!=yb)pointlist.push_back({xl,yb,0,2});
 					break;
 				case 4:
 					pointlist.push_back({xr,yt,0,0});
@@ -151,7 +161,7 @@ int main(){
 					Debug(fprintf(ggb,"a.evalCommand('Ray[(0,0), (%lf,%lf)]'); \n",max(xl,-R),yt);)
 					pointlist.push_back({xr,max(yb,-R),0,1});
 					Debug(fprintf(ggb,"a.evalCommand('Ray[(0,0), (%lf,%lf)]'); \n",xr,max(yb,-R));)
-					pointlist.push_back({xr,yt,0,2});
+					if(xl!=xr&&yt!=yb)pointlist.push_back({xr,yt,0,2});
 					break;
 				case 8:
 					pointlist.push_back({xl,yt,0,0});
@@ -164,7 +174,7 @@ int main(){
 					Debug(fprintf(ggb,"a.evalCommand('Ray[(0,0), (%lf,%lf)]'); \n",xl,max(yb,-R));)
 					pointlist.push_back({min(xr,R),yt,0,1});
 					Debug(fprintf(ggb,"a.evalCommand('Ray[(0,0), (%lf,%lf)]'); \n",min(xr,R),yt);)
-					pointlist.push_back({xl,yt,0,2});
+					if(xl!=xr&&yt!=yb)pointlist.push_back({xl,yt,0,2});
 					break;
 			}
 		}
