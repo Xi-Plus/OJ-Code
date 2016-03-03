@@ -56,7 +56,6 @@ int main(){
 			int difsz,intsz;
 			it=set_intersection(v[q][w].begin(),v[q][w].end(),used.begin(),used.end(),sett.begin());
 			intsz=n-(it-sett.begin());
-			Debug(clog<<(it-sett.begin())<<endl;)
 			it=set_difference(v[q][w].begin(),v[q][w].end(),used.begin(),used.end(),sett.begin());
 			sett.resize(it-sett.begin());
 			difsz=sett.size();
