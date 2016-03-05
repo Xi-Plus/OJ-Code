@@ -1,17 +1,19 @@
-#include <iostream>
+// By KRT girl xiplus
+#include <bits/stdc++.h>
+#define endl '\n'
 using namespace std;
 int main(){
+//	ios::sync_with_stdio(false);
+//	cin.tie(0);
     string s;
     while(getline(cin,s)){
-        int l=s.size(),ans=1;
-        bool x=0;
-        for(int q=0;q<l;q++){
-            if(s[q]==' '&&x){
-                ans++;
-                x=0;
-            }
-            else if(s[q]!=' ')x=1;
+        int ans=0;
+        stringstream ss;
+        ss<<s;
+        int t;
+        while(ss>>t){
+			ans++;
         }
-        cout<<ans-!x<<endl;
+        cout<<ans<<endl;
     }
 }
