@@ -7,6 +7,7 @@ struct Ship{
 	vector<char> son;
 	int index;
 	bool top;
+	bool visit;
 }ship[128];
 struct Ans{
 	char c;
@@ -48,6 +49,7 @@ int main(){
 			ship[q].son.clear();
 			ship[q].index=-1;
 			ship[q].top=1;
+			ship[q].visit=0;
 		}
 		for(int q=0;q<n;q++){
 			cin>>s;
@@ -66,10 +68,11 @@ int main(){
 		bfs.push(c);
 		while(!bfs.empty()){
 			char now=bfs.front();
+			ship[now].visit=1;
 			bfs.pop();
 			for(auto i:ship[now].son){
 				ship[i].index=max(ship[i].index,ship[now].index+1);
-				bfs.push(i);
+				if(!ship[i].visit)bfs.push(i);
 			}
 		}
 		vector<Ans> ans;
@@ -85,4 +88,3 @@ int main(){
 		cout<<endl;
 	}
 }
-
