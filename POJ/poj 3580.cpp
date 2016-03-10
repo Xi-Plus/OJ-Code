@@ -34,7 +34,7 @@ struct Treap{
 		}
 	}
 	void up(){
-		sz=+1;
+		sz=1;
 		mini=key;
 		if(l){
 			sz+=l->sz;
