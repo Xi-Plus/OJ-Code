@@ -8,7 +8,13 @@ int main(){
 	int v[1010];
 	memset(v,0x3f,sizeof(v));
 	v[1]=0;
-	for(int q=1;q<=334;q++){
+	for(int q=1;q<=200;q++){
+		v[q]=min(v[q],v[q-1]+1);
+		v[q*2]=v[q]+1;
+		v[q*3]=v[q]+2;
+		v[q*5]=v[q]+3;
+	}
+	for(int q=201;q<=334;q++){
 		v[q]=min(v[q],v[q-1]+1);
 		v[q*2]=v[q]+1;
 		v[q*3]=v[q]+2;
