@@ -49,7 +49,9 @@ int main(){
 			node[m[s2]].son.push_back(m[s]);
 		}
 		ans.clear();
-		dfs(1,1,1);
+		for(int q=1;q<=n;q++){
+			if(!node[q].visit)dfs(q,q,1);
+		}
 		vector<string> sans;
 		for(int i:ans) sans.push_back(m2[i]);
 		sort(sans.begin(),sans.end());
