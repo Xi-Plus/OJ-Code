@@ -1,11 +1,11 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
+#define endl '\n'
+using namespace std;
 bool nisp[46341]={false};
 int p[10000];
-using namespace std;
 int main(){
-	ios::sync_with_stdio(0);
-    cin.tie(0);
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
 	nisp[0]=nisp[1]=true;
 	int i=2,j,k=0;
 	while(i<46341){
