@@ -113,6 +113,6 @@ int main(){
         }
     }
     for(int q=0;q<ans.size();q++){
-        cout<<ans[q].e<<" "<<ans[q].f<<" "<<ans[q].p<<endl;
+        cout<<fixed<<setprecision(0)<<ans[q].e<<" "<<ans[q].f<<" "<<ans[q].p<<endl;
     }
 }
