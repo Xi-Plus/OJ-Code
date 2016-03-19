@@ -54,17 +54,10 @@ int main(){
 				node[p].son.push_back(t);
 			}
 		}
-		int x=0;
-		while(true){
-			dfs(x,x,1);
-			x=-1;
-			for(int q=0;q<n;q++){
-				if(node[q].visit==0){
-					x=q;
-					break;
-				}
+		for(int q=0;q<n;q++){
+			if(node[q].visit==0){
+				dfs(q,q,1);
 			}
-			if(x==-1)break;
 		}
 		sort(ans.begin(),ans.end(),cmp);
 		cout<<ans.size()<<" critical links"<<endl;
