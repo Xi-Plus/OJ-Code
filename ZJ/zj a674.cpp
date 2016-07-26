@@ -9,11 +9,13 @@ struct Point{
 	int w;
 	vector<Side> side;
 }point[110];
-void dfs(int now){
+int dfslimit;
+void dfs(int now,int limit){
+	if(limit>dfslimit) return ;
 	for(auto i:point[now].side){
 		if(point[i.p].w>max(point[now].w,i.w)){
 			point[i.p].w=max(point[now].w,i.w);
-			dfs(i.p);
+			dfs(i.p,limit+1);
 		}
 	}
 }
@@ -33,11 +35,12 @@ int main(){
 		}
 		if(cas>1)cout<<endl;
 		cout<<"Case #"<<cas<<endl;
+		dfslimit=C*0.25;
 		while(Q--){
 			for(int q=1;q<=C;q++) point[q].w=2147483647;
 			cin>>a>>b;
 			point[a].w=0;
-			dfs(a);
+			dfs(a,0);
 			if(point[b].w==2147483647) cout<<"no path"<<endl;
 			else cout<<point[b].w<<endl;
 		}
