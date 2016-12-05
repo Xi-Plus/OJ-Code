@@ -1,6 +1,7 @@
 // By KRT girl xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
+#define Debug(A) 
 using namespace std;
 int main(){
 //	ios::sync_with_stdio(false);
@@ -10,10 +11,25 @@ int main(){
 	vector<vector<int>>v[m+1];
 	int a,b;
 	while(cin>>a>>b){
+		Debug(clog<<"input "<<a<<" "<<b<<endl;)
 		for(int q=2;q<m;q++){
+			Debug(clog<<"for m="<<q<<endl;)
 			int sz=v[q].size();
+			Debug(clog<<"sz="<<sz<<endl;)
 			for(int w=0;w<sz-1;w++){
+				Debug(clog<<"for w="<<w<<endl;)
 				for(int e=w+1;e<sz;e++){
+					Debug(clog<<"for e="<<e<<endl;
+					clog<<"vector w: ";
+					for(auto i:v[q][w]){
+						clog<<i<<" ";
+					}
+					clog<<endl;
+					clog<<"vector e: ";
+					for(auto i:v[q][e]){
+						clog<<i<<" ";
+					}
+					clog<<endl;)
 					vector<int>dif(q);
 					vector<int>::iterator it;
 					int ta,tb;
@@ -33,6 +49,11 @@ int main(){
 					}
 					sort(temp.begin(),temp.end());
 					v[q+1].push_back(temp);
+					Debug(clog<<"add "<<q+1<<": ";
+					for(auto i:temp){
+						clog<<i<<" ";
+					}
+					clog<<endl;)
 				}
 			}
 		}
@@ -41,6 +62,11 @@ int main(){
 		temp.push_back(b);
 		sort(temp.begin(),temp.end());
 		v[2].push_back(temp);
+		Debug(clog<<"add 2: ";
+		for(auto i:temp){
+			clog<<i<<" ";
+		}
+		clog<<endl;)
 	}
 	vector<int> used;
 	long long ans=1;
@@ -51,17 +77,31 @@ int main(){
 		}
 		int sz=v[q].size();
 		for(int w=0;w<sz;w++){
+			Debug(clog<<"check: ";
+			for(auto i:v[q][w]){
+				clog<<i<<" ";
+			}
+			clog<<" in ";
+			for(auto i:used){
+				clog<<i<<" ";
+			}
+			clog<<endl;)
 			vector<int> sett(q);
 			vector<int>::iterator it;
 			int difsz,intsz;
 			it=set_intersection(v[q][w].begin(),v[q][w].end(),used.begin(),used.end(),sett.begin());
 			intsz=n-(it-sett.begin());
+			Debug(clog<<(it-sett.begin())<<endl;)
 			it=set_difference(v[q][w].begin(),v[q][w].end(),used.begin(),used.end(),sett.begin());
 			sett.resize(it-sett.begin());
 			difsz=sett.size();
+			Debug(clog<<difsz<<" "<<intsz<<endl;
+			clog<<"add: ";)
 			for(auto i:sett){
+				Debug(clog<<i<<" ";)
 				used.push_back(i);
 			}
+			Debug(clog<<endl;)
 			sort(used.begin(),used.end());
 			difsz=sett.size();
 			for(int e=intsz;e>=intsz-difsz+1;e--){
