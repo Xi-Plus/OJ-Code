@@ -16,13 +16,19 @@ int main() {
 				can1[w].insert(c);
 			}
 		}
-		vector<char> can[5];
+		set<char> can2[5];
 		for(int q=0; q<6; q++){
 			for(int w=0; w<5; w++){
 				cin>>c;
 				if(can1[w].count(c)){
-					can[w].push_back(c);
+					can2[w].insert(c);
 				}
+			}
+		}
+		vector<char> can[5];
+		for(int q=0; q<5; q++){
+			for(char c:can2[q]){
+				can[q].push_back(c);
 			}
 		}
 		int poss=1;
@@ -33,6 +39,7 @@ int main() {
 		if(k>poss){
 			cout<<"NO"<<endl;
 		}else{
+			k--;
 			string ans;
 			for(int q=4; q>=0; q--){
 				ans=can[q][k%can[q].size()]+ans;
