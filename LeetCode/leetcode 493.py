@@ -19,7 +19,7 @@ class Solution:
 
     def reversePairs(self, nums):
         self.N = len(nums)
-        sorted_nums = sorted(nums[:])
+        sorted_nums = sorted(nums)
         self.BIT = [0] * (self.N + 1)
         ans = 0
         for i in range(self.N):
