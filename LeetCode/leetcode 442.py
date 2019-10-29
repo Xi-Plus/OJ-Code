@@ -1,10 +1,10 @@
 class Solution:
     def findDuplicates(self, nums):
-        dic = {}
+        temp = set()
         ans = set()
         for v in nums:
-            if v not in dic:
-                dic[v] = 0
+            if v not in temp:
+                temp.add(v)
             else:
                 ans.add(v)
         return ans
