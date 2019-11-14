@@ -15,6 +15,8 @@ class Solution:
                     temp['cost'] += 1
                     ok = False
                     for char in sticker:
+                        if char not in targetdict:
+                            continue
                         if char not in temp:
                             temp[char] = 0
                         temp[char] += 1
