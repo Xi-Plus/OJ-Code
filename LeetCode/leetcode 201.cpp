@@ -15,7 +15,7 @@ class Solution {
 		if (temp > 0) {
 			temp = temp * 2 - 1;
 		}
-		return m & n & (~temp);
+		return m & (~temp);
 	}
 };
 
