@@ -11,11 +11,10 @@ int main() {
 		arr[k] = s;
 	}
 	for (size_t i = 1; i <= 10; i++) {
-		if(arr.count(i)) {
-			cout << arr[i]<<endl;
+		if (arr.count(i)) {
+			cout << arr[i] << endl;
 		} else {
-			cout<<"EMPTY"<<endl;
+			cout << "EMPTY" << endl;
 		}
-		
 	}
 }
