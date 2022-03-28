@@ -2,28 +2,35 @@
 #define endl '\n'
 using namespace std;
 
-int dp[1000005];  // 0 = Ollie, 1 = Stan
+/**
+ * Ollie, if val < testcase
+ * Stan, if val == testcase
+ */
+int dp[1000005];
 
 int main() {
 	// ios::sync_with_stdio(false);
 	// cin.tie(0);
-	string outputs[] = {"Ollie wins", "Stan wins"};
-	int n, m, s;
+	int testcase = 0, n, m, s;
 	int choices[15];
 	while (cin >> n >> m) {
-		memset(dp, 0, sizeof(int) * (n + 5));
+		testcase++;
 		for (int i = 0; i < m; i++) {
 			cin >> choices[i];
 		}
 		for (int i = 1; i <= n; i++) {
 			for (int j = 0; j < m; j++) {
 				s = i - choices[j];
-				if (s >= 0 && dp[s] == 0) {
-					dp[i] = 1;
+				if (s >= 0 && dp[s] < testcase) {
+					dp[i] = testcase;
 					break;
 				}
 			}
 		}
-		cout << outputs[dp[n]] << endl;
+		if (dp[n] == testcase) {
+			cout << "Stan wins" << endl;
+		} else {
+			cout << "Ollie wins" << endl;
+		}
 	}
 }
