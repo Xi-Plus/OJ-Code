@@ -19,7 +19,6 @@ void ans1() {
 	int n, m, s;
 	int choices[15];
 	while (cin >> n >> m) {
-		memset(dp, 0, sizeof(n));
 		for (int i = 0; i < m; i++) {
 			cin >> choices[i];
 		}
