@@ -5,33 +5,25 @@ using namespace std;
 
 int main() {
 	// ios::sync_with_stdio(false); cin.tie(0);
-	int n;
+	int n, t;
 	while (cin >> n && n) {
-		int v[n][n];
+		int r[n] = {}, c[n] = {};
 		for (int q = 0; q < n; q++) {
 			for (int w = 0; w < n; w++) {
-				cin >> v[q][w];
+				cin >> t;
+				r[q] += t;
+				c[w] += t;
 			}
 		}
 		int cntx = 0, cnty = 0, x, y;
 		for (int q = 0; q < n; q++) {
-			int sum = 0;
-			for (int w = 0; w < n; w++) {
-				sum += v[q][w];
-			}
-			if (sum % 2 == 1) {
+			if (r[q] % 2 == 1) {
 				cntx++;
 				x = q + 1;
 			}
-		}
-		for (int w = 0; w < n; w++) {
-			int sum = 0;
-			for (int q = 0; q < n; q++) {
-				sum += v[q][w];
-			}
-			if (sum % 2 == 1) {
+			if (c[q] % 2 == 1) {
 				cnty++;
-				y = w + 1;
+				y = q + 1;
 			}
 		}
 
