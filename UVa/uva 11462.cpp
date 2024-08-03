@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -18,4 +18,4 @@ int main(){
 		for(int q=1;q<n;q++)cout<<" "<<v[q];
 		cout<<endl;
 	}
-}	
+}

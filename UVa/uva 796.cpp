@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -28,7 +28,7 @@ void dfs(int i,int p,int d){
 			node[i].low=min(node[i].low,node[s].low);
 			if(node[s].low>node[i].visit){
 				ans.push_back({min(i,s),max(i,s)});
-			} 
+			}
 		}
 	}
 }

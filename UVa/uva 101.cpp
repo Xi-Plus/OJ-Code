@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -52,7 +52,7 @@ void show(int n){
 //				cout<<"("<<node[anow].parent<<","<<anow<<","<<node[anow].son<<")";
 				anow=node[anow].son;
 			}
-		}	
+		}
 		cout<<endl;
 	}
 }

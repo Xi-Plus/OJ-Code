@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -36,5 +36,5 @@ int main(){
 			ans+=abs(v[q].a*x-v[q].b);
 		}
 		cout<<ans<<endl;
-	} 
+	}
 }

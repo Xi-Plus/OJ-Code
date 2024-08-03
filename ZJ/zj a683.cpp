@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -7,6 +7,6 @@ int main(){
 //	cin.tie(0);
 	long long n,k;
 	while(cin>>n>>k){
-		
+
 	}
 }

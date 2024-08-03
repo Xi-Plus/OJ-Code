@@ -1,7 +1,7 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
-#define Debug(A) 
+#define Debug(A)
 using namespace std;
 int main(){
 //	ios::sync_with_stdio(false);

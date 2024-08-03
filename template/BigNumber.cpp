@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -7,7 +7,7 @@ struct BigNumber{
 	const int WIDTH = 8;
 	vector<int> s;
 	bool sign=0;
-	
+
 	operator long long(){
 		long long num=0;
 		int sz=s.size();
@@ -27,7 +27,7 @@ struct BigNumber{
 		if(sign)return "-"+num;
 		else return num;
 	}
-	
+
 	BigNumber(long long num = 0) { *this = num; }
 	BigNumber operator = (long long num) {
 		s.clear();

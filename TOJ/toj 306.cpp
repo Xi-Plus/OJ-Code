@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -14,7 +14,7 @@ struct edge{
 };
 vector<edge> g[MAX_V];
 void insert_edge(int from,int to,double cost){
-    g[from].push_back({to,cost});  
+    g[from].push_back({to,cost});
     g[to].push_back({from,cost});
 }
 struct pointd{
@@ -31,7 +31,7 @@ struct point{
 struct answer{
     int e,f;
     double p;
-    
+
 };
 vector<answer> ans;
 bool cmp(answer a,answer b){

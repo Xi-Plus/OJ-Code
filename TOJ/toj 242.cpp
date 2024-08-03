@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -15,10 +15,10 @@ struct Tree{
 };
 void up(Tree *id){
 	id->color=id->l->color|id->r->color;
-	
+
 	id->lcolor=id->l->lcolor;
 	id->rcolor=id->r->rcolor;
-	
+
 	if(id->color==2){
 		id->sum=0;
 	}else {

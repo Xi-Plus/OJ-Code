@@ -1,7 +1,7 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
-#define Debug(A) 
+#define Debug(A)
 const double PI=acos(-1);
 const double eps=10e-6;
 using namespace std;
@@ -186,7 +186,7 @@ int main(){
 			printf("side: %lf %lf %lf %lf \n",i.p1.x,i.p1.y,i.p2.x,i.p2.y);
 		}
 		)
-		
+
 		vector<PointList>point_ans;
 		for(auto p:pointlist){
 			Debug(printf(" point: %lf %lf\n",p.point.x,p.point.y);)

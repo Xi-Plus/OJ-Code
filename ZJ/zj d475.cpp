@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -6,7 +6,7 @@ long long power(long long a,long long b){
 	if(b==1) return a;
 	if(b&1) return power(a,b/2)*power(a,b/2)*a;
 	else return power(a,b/2)*power(a,b/2);
-} 
+}
 int main(){
 //	ios::sync_with_stdio(false);
 //	cin.tie(0);

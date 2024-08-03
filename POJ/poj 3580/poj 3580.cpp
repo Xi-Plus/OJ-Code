@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <iostream>
 #define endl '\n'
 using namespace std;

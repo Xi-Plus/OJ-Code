@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 //#include "lib1885.h"
 #define endl '\n'
@@ -48,7 +48,7 @@ struct Rule{
 	tuple<int,int,int> par;
 	int d;
 };
-/***Judge***/ 
+/***Judge***/
 
 int Init(){
 	return 1000;
@@ -114,7 +114,7 @@ bool answer(int ans[]){
 	cout<<x<<endl;
 	return x;
 }
-/***Judge***/ 
+/***Judge***/
 Rule bestrule[7][730];
 vector<vector<int>> realans;
 int limit[]={0,1,3,9,27,81,243};

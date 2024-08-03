@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -31,7 +31,7 @@ int main(){
 		priority_queue<int,vector<int>,greater<int>> work;
 		bool x=1;
 		int waitkey=0;
-		for(int q=0;q<K;q++){ 
+		for(int q=0;q<K;q++){
 //			cout<<"work "<<k[q]<<endl;
 			for(;waitkey<N&&wait[waitkey].first<=k[q];waitkey++){
 				work.push(wait[waitkey].second);
@@ -42,7 +42,7 @@ int main(){
 				x=0;
 				break;
 			}else{
-				for(int w=0;w<k[q];w++)work.pop(); 
+				for(int w=0;w<k[q];w++)work.pop();
 //				cout<<"pop "<<k[q]<<endl;
 			}
 		}

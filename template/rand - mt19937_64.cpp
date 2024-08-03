@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -9,7 +9,7 @@ int main(){
 	rng.seed(time(NULL));
 	uniform_int_distribution<unsigned long long> dis;
 	cout<<dis(rng)<<endl;
-	
+
 	mt19937 mt(time(NULL));
 	cout<<mt()<<endl;
 }

@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -30,5 +30,5 @@ int main(){
 			ans=min(ans,tans);
 		}
 		cout<<ans<<endl;
-	}	
+	}
 }

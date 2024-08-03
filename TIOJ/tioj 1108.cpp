@@ -1,4 +1,4 @@
-// By KRT girl xiplus
+// By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -48,6 +48,6 @@ int main(){
 		create(0,pre.size()-1,0,true);
 		dfs(1);
 		cout<<endl;
-	} 
+	}
 }
 
