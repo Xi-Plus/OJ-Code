@@ -38,6 +38,27 @@ void insertion_sort() {
 	}
 }
 
+int tmp[1000005];
+void merge_sort(int l, int r) {
+	if (l == r) {
+		return;
+	}
+	int mid = (l + r) / 2;
+	merge_sort(l, mid);
+	merge_sort(mid + 1, r);
+	int i = l, j = mid + 1, k = l;
+	while (i <= mid || j <= r) {
+		if (j > r || (i <= mid && v[i] < v[j])) {
+			tmp[k++] = v[i++];
+		} else {
+			tmp[k++] = v[j++];
+		}
+	}
+	for (int i = l; i <= r; i++) {
+		v[i] = tmp[i];
+	}
+}
+
 void built_in_sort() {
 	sort(v, v + n);
 }
@@ -52,6 +73,7 @@ int main() {
 		// bubble_sort();
 		// selection_sort();
 		// insertion_sort();
+		// merge_sort(0, n - 1);
 		built_in_sort();
 
 		cout << v[0];
