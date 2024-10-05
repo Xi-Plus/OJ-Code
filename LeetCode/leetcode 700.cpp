@@ -13,15 +13,33 @@
 class Solution {
    public:
 	TreeNode* searchBST(TreeNode* root, int val) {
+		return solve1(root, val);
+		// return solve2(root, val);
+	}
+
+	TreeNode* solve1(TreeNode* root, int val) {
 		if (!root) {
 			return nullptr;
 		}
 		if (val == root->val) {
 			return root;
-		} else if (val < root->val) {
-			return searchBST(root->left, val);
+		} else if (val > root->val) {
+			return solve1(root->right, val);
 		} else {
-			return searchBST(root->right, val);
+			return solve1(root->left, val);
 		}
+	}
+
+	TreeNode* solve2(TreeNode* root, int val) {
+		while (root) {
+			if (val == root->val) {
+				return root;
+			} else if (val > root->val) {
+				root = root->right;
+			} else {
+				root = root->left;
+			}
+		}
+		return nullptr;
 	}
 };
