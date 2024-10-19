@@ -19,13 +19,6 @@ class Solution {
 		if (!root->left && !root->right) {
 			return root->val == targetSum;
 		}
-		bool ans = false;
-		if (root->left) {
-			ans |= hasPathSum(root->left, targetSum - root->val);
-		}
-		if (root->right) {
-			ans |= hasPathSum(root->right, targetSum - root->val);
-		}
-		return ans;
+		return hasPathSum(root->left, targetSum - root->val) || hasPathSum(root->right, targetSum - root->val);
 	}
 };
