@@ -1,11 +1,12 @@
 // By xiplus
+typedef vector<vector<int>> vector2d;
 class Solution {
    public:
-	int findCircleNum(vector<vector<int>>& isConnected) {
+	int findCircleNum(vector2d& isConnected) {
 		return disjointSet(isConnected);
 		// return dfs(isConnected);
 	}
-	int dfs(vector<vector<int>>& isConnected) {
+	int dfs(vector2d& isConnected) {
 		int n = isConnected.size();
 		vector<int> edges[n];
 		for (int i = 0; i < n; i++) {
@@ -35,7 +36,7 @@ class Solution {
 			dfsCore(edges, visited, y);
 		}
 	}
-	int disjointSet(vector<vector<int>>& isConnected) {
+	int disjointSet(vector2d& isConnected) {
 		int n = isConnected.size();
 		vector<int> parent(n);
 		for (int i = 0; i < n; i++) {
