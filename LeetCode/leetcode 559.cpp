@@ -25,13 +25,10 @@ class Solution {
 		if (!root) {
 			return 0;
 		}
-		if (root->children.size() == 0) {
-			return 1;
-		}
 		int ans = 0;
 		for (auto& child : root->children) {
-			ans = max(ans, maxDepth(child) + 1);
+			ans = max(ans, maxDepth(child));
 		}
-		return ans;
+		return ans + 1;
 	}
 };
