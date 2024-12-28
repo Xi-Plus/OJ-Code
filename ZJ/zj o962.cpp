@@ -9,13 +9,6 @@ int main() {
 	int n;
 	cin >> n;
 	long long ksum = 0, maxh = 0, ans = 0, h, k;
-	cin >> k;
-	ksum += k;
-	for (int i = 0; i < k; i++) {
-		cin >> h;
-		maxh = max(maxh, h);
-	}
-	n--;
 	while (n--) {
 		cin >> k;
 		long long rowh = 0;
