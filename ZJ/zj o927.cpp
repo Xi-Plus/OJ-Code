@@ -3,8 +3,8 @@
 #define endl '\n'
 using namespace std;
 
-vector<int> edges[2001];
-bool visited[2001] = {};
+vector<int> edges[1000];
+bool visited[1000] = {};
 bool cycle = false;
 void dfs(int src, int cur) {
 	for (auto next : edges[cur]) {
