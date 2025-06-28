@@ -11,10 +11,8 @@ int main() {
 	while (t--) {
 		int n;
 		cin >> n;
-		assert(n >= 2 && n <= 200000);
 		for (int i = 0; i < n; i++) {
 			cin >> data[i];
-			assert(data[i] >= 1 && data[i] <= 1000000000);
 		}
 		if (n > 3) {
 			sort(data + 1, data + n - 1);
