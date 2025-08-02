@@ -16,10 +16,12 @@ int main() {
 		dp[0] = true;
 		int sz = (1 << n);
 		for (int i = 0; i < sz; i++) {
-			for (int j = 0; j < n; j++) {
-				next = (i | (1 << j));
-				if (dp[i] && s[next - 1] == '0') {
-					dp[next] = true;
+			if (dp[i]) {
+				for (int j = 0; j < n; j++) {
+					next = (i | (1 << j));
+					if (s[next - 1] == '0') {
+						dp[next] = true;
+					}
 				}
 			}
 		}
