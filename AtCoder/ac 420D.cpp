@@ -4,9 +4,6 @@
 using namespace std;
 
 char a[2][505][505];
-int vis[2][505][505];
-int sr, sc, gr, gc;
-int ans = 1e9;
 int dr[] = {1, -1, 0, 0};
 int dc[] = {0, 0, 1, -1};
 int aidx = 0;
@@ -15,22 +12,21 @@ int main() {
 	// ios::sync_with_stdio(false); cin.tie(0);
 	int n, m;
 	cin >> n >> m;
+	queue<tuple<int, int, int, int>> q;
 	for (int i = 1; i <= n; i++) {
 		for (int j = 1; j <= m; j++) {
 			cin >> a[0][i][j];
 			if (a[0][i][j] == 'o') {
-				a[1][i][j] = 'x';
+				a[1][i][j] = '#';
 			} else if (a[0][i][j] == 'x') {
+				a[0][i][j] = '#';
 				a[1][i][j] = 'o';
+			} else if (a[0][i][j] == 'S') {
+				q.push({0, i, j, 0});
+				a[0][i][j] = '#';
+				a[1][i][j] = '.';
 			} else {
 				a[1][i][j] = a[0][i][j];
-			}
-			if (a[0][i][j] == 'S') {
-				sr = i;
-				sc = j;
-			} else if (a[0][i][j] == 'G') {
-				gr = i;
-				gc = j;
 			}
 		}
 	}
@@ -46,9 +42,6 @@ int main() {
 		a[1][0][j] = '#';
 		a[1][n + 1][j] = '#';
 	}
-	queue<tuple<int, int, int, int>> q;
-	vis[0][sr][sc] = 1;
-	q.push({0, sr, sc, 0});
 	while (!q.empty()) {
 		auto [aidx, r, c, step] = q.front();
 		q.pop();
@@ -59,24 +52,16 @@ int main() {
 			if (a[aidx][nr][nc] == '?') {
 				naidx = 1 - aidx;
 			}
-			if (vis[naidx][nr][nc]) {
-				continue;
-			}
-			if (a[aidx][nr][nc] == '#' || a[aidx][nr][nc] == 'x') {
+			if (a[aidx][nr][nc] == '#') {
 				continue;
 			}
 			if (a[aidx][nr][nc] == 'G') {
-				ans = min(ans, step + 1);
-				continue;
+				cout << step + 1 << endl;
+				return 0;
 			}
-			vis[naidx][nr][nc] = 1;
+			a[aidx][nr][nc] = '#';
 			q.push({naidx, nr, nc, step + 1});
 		}
 	}
-
-	if (ans == 1e9) {
-		cout << -1 << endl;
-	} else {
-		cout << ans << endl;
-	}
+	cout << -1 << endl;
 }
