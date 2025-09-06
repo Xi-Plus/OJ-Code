@@ -3,69 +3,41 @@
 #define endl '\n'
 using namespace std;
 
-struct Node {
-	int val;
-	Node* next;
-	Node(int v) : val(v), next(nullptr) {}
-};
-
 int main() {
 	// ios::sync_with_stdio(false); cin.tie(0);
 	int q, t, x, y;
 	cin >> q;
-	Node* head = new Node(0);
-	unordered_map<int, Node*> node_map;
-	node_map[0] = head;
+	vector<int> a(q + 1);
+	a[0] = -1;
 	for (int i = 1; i <= q; i++) {
 		cin >> t;
 		if (t == 1) {
 			cin >> x;
-			Node* newNode = new Node(i);
-			node_map[i] = newNode;
-			newNode->next = node_map[x]->next;
-			node_map[x]->next = newNode;
+			a[i] = a[x];
+			a[x] = i;
 		} else {
 			cin >> x >> y;
-			Node* curX = node_map[x]->next;
-			Node* curY = node_map[y]->next;
+			int curX = x, curY = y;
 			long long ansX = 0, ansY = 0;
-			while (curX && curY) {
-				if (curX->val == y) {
-					cout << ansX << endl;
-					node_map[x]->next = node_map[y];
-					curX = nullptr;
-					curY = nullptr;
-					break;
+			while (true) {
+				if (a[curX] != -1) {
+					curX = a[curX];
+					if (curX == y) {
+						cout << ansX << endl;
+						a[x] = y;
+						break;
+					}
+					ansX += curX;
 				}
-				ansX += curX->val;
-				curX = curX->next;
-				if (curY->val == x) {
-					cout << ansY << endl;
-					node_map[y]->next = node_map[x];
-					curX = nullptr;
-					curY = nullptr;
-					break;
+				if (a[curY] != -1) {
+					curY = a[curY];
+					if (curY == x) {
+						cout << ansY << endl;
+						a[y] = x;
+						break;
+					}
+					ansY += curY;
 				}
-				ansY += curY->val;
-				curY = curY->next;
-			}
-			while (curX) {
-				if (curX->val == y) {
-					cout << ansX << endl;
-					node_map[x]->next = node_map[y];
-					break;
-				}
-				ansX += curX->val;
-				curX = curX->next;
-			}
-			while (curY) {
-				if (curY->val == x) {
-					cout << ansY << endl;
-					node_map[y]->next = node_map[x];
-					break;
-				}
-				ansY += curY->val;
-				curY = curY->next;
 			}
 		}
 	}
