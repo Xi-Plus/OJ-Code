@@ -3,6 +3,17 @@
 #define endl '\n'
 using namespace std;
 
+struct Node {
+	int idx;
+	long long fuel, weight;
+	bool operator<(const Node& rhs) const {
+		if (weight != rhs.weight) {
+			return weight > rhs.weight;
+		}
+		return fuel > rhs.fuel;
+	}
+};
+
 int main() {
 	// ios::sync_with_stdio(false); cin.tie(0);
 	int n, m;
@@ -21,20 +32,16 @@ int main() {
 	long long ans[n + 1];
 	fill_n(ans, n + 1, 1e18);
 	ans[1] = 0;
-	priority_queue<tuple<long long, long long, int>, vector<tuple<long long, long long, int>>, greater<tuple<long long, long long, int>>> q;
-	bool visited[n + 1];
-	fill_n(visited, n + 1, false);
-	q.push({0, 0, 1});
+	priority_queue<Node> q;
+	q.push({1, 0, w[1]});
 	while (!q.empty()) {
-		auto [dis, weight, cur] = q.top();
+		auto cur = q.top();
 		q.pop();
-		if (dis > ans[cur]) {
-			continue;
-		}
-		ans[cur] = min(ans[cur], dis);
-		weight += w[cur];
-		for (int next : edges[cur]) {
-			q.push({ans[cur] + weight, weight, next});
+		for (int next : edges[cur.idx]) {
+			if (cur.fuel + cur.weight < ans[next]) {
+				ans[next] = cur.fuel + cur.weight;
+				q.push({next, ans[next], cur.weight + w[next]});
+			}
 		}
 	}
 	for (int i = 1; i <= n; i++) {
