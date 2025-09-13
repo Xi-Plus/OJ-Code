@@ -26,9 +26,14 @@ int main() {
 	ans[0] = 0;
 	priority_queue<Node> q;
 	q.push({0, 0});
+	bool visited[n];
 	while (!q.empty()) {
 		auto [cur, dis] = q.top();
 		q.pop();
+		if (visited[cur]) {
+			continue;
+		}
+		visited[cur] = true;
 		for (auto& [next, weight] : edges[cur]) {
 			if (dis + weight < ans[next]) {
 				ans[next] = dis + weight;
