@@ -8,15 +8,11 @@ int main() {
 	int n, maxW;
 	cin >> n >> maxW;
 	int w, v;
-	vector<long long> dp(maxW + 1, 0), prev(maxW + 1, 0);
+	vector<long long> dp(maxW + 1, 0);
 	for (int i = 0; i < n; i++) {
-		swap(dp, prev);
 		cin >> w >> v;
-		for (int j = 0; j < w; j++) {
-			dp[j] = prev[j];
-		}
-		for (int j = w; j <= maxW; j++) {
-			dp[j] = max(prev[j], prev[j - w] + v);
+		for (int j = maxW; j >= w; j--) {
+			dp[j] = max(dp[j], dp[j - w] + v);
 		}
 	}
 	cout << dp[maxW] << endl;
