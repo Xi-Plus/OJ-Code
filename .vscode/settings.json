@@ -3,6 +3,6 @@
 		"iostream": "cpp"
 	},
 	"code-runner.executorMap": {
-		"cpp": "cd $dir && g++ \"$fileName\" -std=c++14 -o \"$fileNameWithoutExt.exe\" && \"$fileNameWithoutExt.exe\""
+		"cpp": "cd $dir && g++ \"$fileName\" -std=c++17 -o \"$fileNameWithoutExt.exe\" && \"$fileNameWithoutExt.exe\""
 	}
 }
