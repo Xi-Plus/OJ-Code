@@ -1,0 +1,19 @@
+// By xiplus
+#include <bits/stdc++.h>
+#define endl '\n'
+using namespace std;
+
+int main() {
+	// ios::sync_with_stdio(false); cin.tie(0);
+	int n, x, a;
+	cin >> n >> x;
+	while (n--) {
+		cin >> a;
+		if (a < x) {
+			cout << 1 << endl;
+			x = a;
+		} else {
+			cout << 0 << endl;
+		}
+	}
+}
