@@ -1,5 +1,4 @@
 // By xiplus
-// WA
 #include <bits/stdc++.h>
 
 #include <ext/pb_ds/assoc_container.hpp>
@@ -27,7 +26,7 @@ int main() {
 		cin >> v;
 		cnt[v]++;
 	}
-	vector<pair<int, int>> cnt2;
+	vector<pair<long long, long long>> cnt2;
 	for (int i = 1; i <= m; i++) {
 		cnt2.push_back({cnt[i], i});
 	}
