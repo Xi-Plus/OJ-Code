@@ -1,4 +1,24 @@
 // By xiplus
+// Fake AC
+/*
+Input:
+3
+20 2
+20 3
+10 4
+3
+1 2 3
+
+Correct Output:
+20
+20
+10
+
+Wrong output:
+20
+10
+10
+*/
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
@@ -28,7 +48,7 @@ int main() {
 	int ni = 0;
 	for (int i = 0; i < q; i++) {
 		while (ni < n && v[ni].first <= t[ti[i]]) {
-			s.erase(s.find(v[ni].second));
+			s.erase(v[ni].second);
 			ni++;
 		}
 		ans[ti[i]] = *s.rbegin();
