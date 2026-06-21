@@ -1,4 +1,3 @@
-// MLE
 // By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
@@ -6,61 +5,51 @@ using namespace std;
 
 vector<vector<int>> dp;
 string s;
-const int MAX = 2e9;
+const int MAX = 1e9;
+int new_target, temp;
+int k;
 int dfs(int target, int len) {
-	if (target == 0) {
+	if (target <= 0) {
 		return 0;
 	}
 	if (len < 0) {
 		return MAX;
 	}
+	if (target > k + 2) {
+		return MAX;
+	}
 	if (dp[target][len] != -1) {
-		cerr << "find " << target << " " << len << " " << dp[target][len] << endl;
 		return dp[target][len];
 	}
-	dp[target][len] = dfs(target, len - 1);
+	dp[target][len] = MAX;
+	new_target = target;
+	if (len >= 2 && (s[len - 2] == 'A') && (s[len - 1] == 'B') && (s[len] == 'C')) {
+		new_target += 1;
+	}
+	temp = dfs(new_target, len - 1);
+	if (temp < dp[target][len]) {
+		dp[target][len] = temp;
+	}
+
 	if (len >= 2) {
-		int new_target = target - 1;
-		if ((s[len - 2] == 'A') && (s[len - 1] == 'B') && (s[len] == 'C')) {
+		new_target = target - 1;
+		if (len >= 2 && (s[len - 2] == 'A') && (s[len - 1] == 'B') && (s[len] == 'C')) {
 			new_target = target;
-		} else if (len - 3 > 0 && (s[len - 3] == 'A') && (s[len - 2] == 'B') && (s[len - 1] == 'C')) {
+		} else if (len >= 3 && (s[len - 3] == 'A') && (s[len - 2] == 'B') && (s[len - 1] == 'C')) {
 			new_target = target;
-		} else if (len - 4 > 0 && (s[len - 4] == 'A') && (s[len - 3] == 'B') && (s[len - 2] == 'C')) {
-			new_target = target;
-		} else if ((s[len - 1] == 'A') && (s[len] == 'B') && (s[len + 1] == 'C')) {
-			new_target = target;
-		} else if ((s[len] == 'A') && (s[len + 1] == 'B') && (s[len + 2] == 'C')) {
+		} else if (len >= 4 && (s[len - 4] == 'A') && (s[len - 3] == 'B') && (s[len - 2] == 'C')) {
 			new_target = target;
 		}
-		if (new_target != target - 1) {
-			cerr << "find " << target << " " << len << " new_target " << new_target << endl;
-		}
-		int temp = dfs(new_target, len - 3) + 3 - (s[len - 2] == 'A') - (s[len - 1] == 'B') - (s[len] == 'C');
+		temp = dfs(new_target, len - 3) + 3 - (s[len - 2] == 'A') - (s[len - 1] == 'B') - (s[len] == 'C');
 		if (temp < dp[target][len]) {
 			dp[target][len] = temp;
-			cout << "update temp " << temp << endl;
 		}
 	}
-	cerr << "find " << target << " " << len << " " << dp[target][len] << endl;
 	return dp[target][len];
 }
 void sol() {
-	int k;
 	cin >> s >> k;
-	int cnt = 0;
-	for (int i = 0; i < s.size() - 2; i++) {
-		if (s[i] == 'A' && s[i + 1] == 'B' && s[i + 2] == 'C') {
-			cnt++;
-			i += 2;
-		}
-	}
-	int target = cnt + k;
-	if (target > s.size() * 3) {
-		cout << -1 << endl;
-		return;
-	}
-	dp.clear();
-	dp.resize(k + 1, std::vector<int>(s.size(), -1));
+	dp.assign(k + 5, vector<int>(s.size(), -1));
 	int ans = dfs(k, s.size() - 1);
 	if (ans == MAX) {
 		ans = -1;
