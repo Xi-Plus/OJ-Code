@@ -15,7 +15,7 @@ int dfs(int target, int len) {
 	if (len < 0) {
 		return MAX;
 	}
-	if (target > k + 2) {
+	if (target > k) {
 		return MAX;
 	}
 	if (dp[target][len] != -1) {
@@ -49,7 +49,7 @@ int dfs(int target, int len) {
 }
 void sol() {
 	cin >> s >> k;
-	dp.assign(k + 5, vector<int>(s.size(), -1));
+	dp.assign(k + 1, vector<int>(s.size(), -1));
 	int ans = dfs(k, s.size() - 1);
 	if (ans == MAX) {
 		ans = -1;
