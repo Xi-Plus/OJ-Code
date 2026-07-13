@@ -21,7 +21,9 @@ void sol() {
 				pq.pop();
 			}
 			ans += len / v * cnt;
-			pq.push({v - 1, len / v * cnt});
+			if (v - 1 > 0) {
+				pq.push({v - 1, len / v * cnt});
+			}
 			if (len % v) {
 				pq.push({len % v, cnt});
 			}
