@@ -6,7 +6,6 @@ using namespace std;
 int n;
 string s;
 int sum[500005];
-const int INVALID = 2e9;
 struct Node {
 	int l, r, lazy = 0, minv;
 	Node *left, *right;
