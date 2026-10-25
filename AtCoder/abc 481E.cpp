@@ -27,17 +27,13 @@ struct Point {
 	}
 	bool operator<(const Point& other) const {
 		if (this->zone() == other.zone()) {
-			if (y * other.x == other.y * x) {
-				return this->side() < other.side();
+			// return (long double)y / x < (long double)other.y / other.x;
+			if (x > 0 && other.x > 0) {
+				return y * other.x < other.y * x;
+			} else if (x < 0 && other.x < 0) {
+				return y * other.x < other.y * x;
 			} else {
-				// return (long double)y / x < (long double)other.y / other.x;
-				if (x > 0 && other.x > 0) {
-					return y * other.x < other.y * x;
-				} else if (x < 0 && other.x < 0) {
-					return y * other.x < other.y * x;
-				} else {
-					return y * other.x > other.y * x;
-				}
+				return y * other.x > other.y * x;
 			}
 		} else {
 			return this->zone() < other.zone();
@@ -57,15 +53,9 @@ void sol() {
 		}
 	}
 	sort(p.begin(), p.end());
-	int ans = cnt;
-	cerr << cnt << endl;
+	int ans = max(cnt, n - cnt);
 	for (int i = 0; i < n; i++) {
 		cnt += p[i].side();
-		cerr << i << " " << p[i].side() << " " << cnt << " (" << p[i].x << " " << p[i].y << ") " << " " << (double)p[i].y / p[i].x << endl;
-		if (i + 1 < n && p[i].y * p[i + 1].x == p[i + 1].y * p[i].x) {
-			cerr << "skip" << endl;
-			continue;
-		}
 		ans = max(ans, cnt);
 		ans = max(ans, n - cnt);
 	}
@@ -77,7 +67,6 @@ int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		cerr << "=== " << t << endl;
 		sol();
 	}
 }
